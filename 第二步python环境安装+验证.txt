@@ -1,0 +1,7 @@
+#把文件地址替换💛
+python3.12 -m venv 💛/venv
+
+💛/venv/bin/python -m pip install --upgrade pip
+💛/venv/bin/python -m pip install requests pyotp
+
+💛/venv/bin/python -c "import pyotp,requests; print('ok')"

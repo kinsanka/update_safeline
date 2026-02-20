@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ========================================================
+SCRIPTS_DIR="💛放置py文件和venv依赖环境的文件夹"
+CERT_DIR="❤️你放证书的文件夹"
+# ========================================================
+
+FULLCHAIN="${CERT_DIR}/fullchain.pem"
+PRIVKEY="${CERT_DIR}/privkey.pem"
+
+test -s "$FULLCHAIN" || { echo "fullchain.pem missing/empty"; exit 1; }
+test -s "$PRIVKEY"   || { echo "privkey.pem missing/empty"; exit 1; }
+
+# ========================================================
+export SAFELINE_BASE_URL="🔮你的雷池后端地址"
+export SAFELINE_CERT_ID="💚你的证书ID"
+export SAFELINE_API_TOKEN="💙你的新token"
+# ========================================================
+
+"$SCRIPTS_DIR/venv/bin/python" \
+"$SCRIPTS_DIR/update_safeline.py" \
+"$FULLCHAIN" "$PRIVKEY"
